@@ -1,11 +1,6 @@
 window.addEventListener("load", (event) => {
-	setTimeout(() => main(document.body), 100);
+	setTimeout(() => main(document.body), 500);
 });
-
-/*window.addEventListener("load", (event) => {
-	main(document.body);
-	document.body.addEventListener("DOMNodeInserted", (event) => main(event.target));
-});*/
 	
 function main(node) {
 	let walker = document.createTreeWalker(
@@ -20,7 +15,6 @@ function main(node) {
 		}
 		
 		let content = walker.currentNode.textContent.toLowerCase();
-		let wordlist = ["cookie", "analytics"];
 		for (var i = 0; i < wordlist.length; i++) {
 			if (content.includes(wordlist[i])) {
 				current = walker.currentNode;
@@ -46,7 +40,6 @@ function checkbtn(child) {
 		if (child.matches(buttonlist[i])) {
 			let content = child.textContent.toLowerCase();
 		
-			let checklist = ["accept", "allow", "agree", "consent"];
 			for (var i = 0; i < checklist.length; i++) {
 				if (content.includes(checklist[i])) {
 					child.click();
